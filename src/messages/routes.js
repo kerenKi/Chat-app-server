@@ -5,6 +5,10 @@ const Message = require('./model')
 // importing the emit function
 const emitMessages = require('../emitMessages')
 
+//Requiring the user model
+const User = require('../users/model')
+
+
 
 const router = new Router()
 

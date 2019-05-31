@@ -1,6 +1,9 @@
 const Sequelize = require('sequelize')
 const sequelize = require('../../db')
 
+//Requiring the user model
+const User = require('../users/model')
+
 const Message = sequelize.define('messages', {
 
   message: {
@@ -8,7 +11,7 @@ const Message = sequelize.define('messages', {
     field: 'message',
     allowNull: false
   },
-  user_id: {
+  userId: {
     type: Sequelize.INTEGER,
     field: 'user_id',
   },
@@ -18,6 +21,8 @@ const Message = sequelize.define('messages', {
   tableName: 'messages'
 })
 
-
+//Specify the relation between messages and users. the messages belongs to a user
+// a user can have many messages belonging to it
+Message.belongsTo(User)
 
 module.exports = Message
