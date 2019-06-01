@@ -12,7 +12,7 @@ router.post('/login', (req, res, next) => {
   .then(([user, created]) => {
     console.log(user)
       const action = {
-        type: 'USER_CREATED',
+        type: 'USER_LOGIN',
         payload: user
       }
       global.io.emit('action',action)

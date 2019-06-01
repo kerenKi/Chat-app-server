@@ -13,6 +13,7 @@ const User = require('../users/model')
 const router = new Router()
 
 router.post('/message', (req, res, next) => {
+  console.log(req.body)
   Message
     .create(req.body)
     .then( message => {

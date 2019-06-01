@@ -28,6 +28,14 @@ io.on(
   client => {
   console.log('client.id test: ', client.id)
 
+  const action = {
+    type: 'SOCKET_ID',
+    payload: client.id
+  }
+  //emit sends to all the client the object of action with the name 'action'
+  //socketset in the front end will make this emit a legit action and send it to the reducer
+  global.io.emit('action',action)
+
   emitMessages()
 
   client.on(
