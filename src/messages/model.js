@@ -23,6 +23,8 @@ const Message = sequelize.define('messages', {
 
 //Specify the relation between messages and users. the messages belongs to a user
 // a user can have many messages belonging to it
-Message.belongsTo(User)
+Message.belongsTo(User,{
+  "foreignKey": "user_id",
+})
 
 module.exports = Message

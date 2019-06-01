@@ -1,9 +1,12 @@
 //Message is the table messages id the db:
 const Message = require('./messages/model')
+const User = require('./users/model')
 
 function emitMessages () {
   Message
-  .findAll()
+  .findAll({
+    include:[{ model: User, attributes: ['user_name'] }]
+  })
   .then(messages => {
      const action = {
        type: 'MESSAGES',

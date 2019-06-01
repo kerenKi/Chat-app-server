@@ -8,15 +8,16 @@ const router = new Router()
 
 router.post('/login', (req, res, next) => {
   User
-    .create(req.body)
-    .then( user => {
-      if (!user) {
-        return res.status(404).send({
-          message: 'could not find the user'
-        })
+  .findOrCreate({where: {user_name: req.body.user_name, email: req.body.email}, defaults: {password: req.body.password}})
+  .then(([user, created]) => {
+    console.log(user)
+      const action = {
+        type: 'USER_CREATED',
+        payload: user
       }
-      return res.status(201).send(user)
-    })
+      global.io.emit('action',action)
+   })
+    
     .catch(next)    
 })
 
