@@ -15,7 +15,7 @@ router.post('/logins', (req, res)=> {
       message: 'Please supply a valid email and password'
     })
   } else {
-     // 1. find user based on user_name and email address
+     // 1. find user based on email address
      User
       .findOne({
         where: {
