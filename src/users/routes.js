@@ -1,24 +1,34 @@
-//Importing from express
 const { Router } = require('express')
-//Importing the user model from model file
+const { toJWT } = require('../auth/jwt')
 const User = require('./model')
-
+const bcrypt = require('bcrypt');
 
 const router = new Router()
 
-router.post('/login', (req, res, next) => {
+router.post('/users', (req, res, next) => {
   User
-  .findOrCreate({where: {user_name: req.body.user_name, email: req.body.email}, defaults: {password: req.body.password}})
-  .then(([user, created]) => {
-    console.log(user)
+    .create({
+      user_name: req.body.user_name,
+      email: req.body.email,
+      password: bcrypt.hashSync(req.body.password, 10)
+    })
+    .then(user => {
+      if (!user) {
+        return res.status(404).send({
+          message: 'could not find the user'
+        })
+      } 
       const action = {
         type: 'USER_LOGIN',
         payload: user
       }
       global.io.emit('action',action)
-   })
-    
-    .catch(next)    
+      return res.status(201).send({
+        jwt: toJWT({ userId: user.id }),
+        user_name: user.user_name
+      })
+    })
+    .catch(next)   
 })
 
 module.exports = router
