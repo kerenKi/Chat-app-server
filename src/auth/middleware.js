@@ -10,14 +10,18 @@ function authorization(req, res, next) {
     try {
       //auth[1] is the token that is passed to toData to get the data
       const data = toData(auth[1])
+      console.log('Data:', data)
+
       User
         .findByPk(data.userId)
         .then(user => {
-          if (!user) return next('User does not exist')
-          
+          console.log('user:', user)
+          if (!user) {
+            return next('User does not exist')
+          }
           res.locals.user = {
             id: user.id,
-          user_name: user.user_name
+            user_name: user.user_name
           }
           next()
         })
