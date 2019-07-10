@@ -2,8 +2,9 @@ const express = require('express')
 const socketIo = require('socket.io')
 const cors = require('cors')
 const bodyParser = require('body-parser')
-const messagesRouter = require('./src/messages/routes')
-const userRouter = require('./src/users/routes')
+const AuthRouter = require('./src/auth/routes')
+const MessagesRouter = require('./src/messages/routes')
+const UserRouter = require('./src/users/routes')
 const emitMessages = require('./src/emitMessages')
 
 const app = express()
@@ -11,8 +12,9 @@ const app = express()
 app
 .use(cors())
 .use(bodyParser.json())
-.use(messagesRouter)
-.use(userRouter)
+.use(AuthRouter)
+.use(MessagesRouter)
+.use(UserRouter)
 
 
 function onListen () {

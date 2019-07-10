@@ -1,4 +1,3 @@
-//Message is the table messages id the db:
 const Message = require('./messages/model')
 const User = require('./users/model')
 
