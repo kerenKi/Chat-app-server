@@ -1,6 +1,5 @@
 const { Router } = require('express')
 const Message = require('./model')
-const User = require('../users/model')
 const emitMessages = require('../emitMessages')
 const authorization = require('../auth/middleware')
 
