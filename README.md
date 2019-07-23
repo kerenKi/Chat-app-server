@@ -4,17 +4,20 @@
 
 This is a simple chat app.
 An individual project in order to practice building a full-stack application using different technologies and concepts.
-This is the server part of the chat app.
+This is the server side of the chat app.
 
 
 ### Technologies used
 
 Click links to view some samples in this project 
-* [React](https://github.com/kerenKi/chat-app--client/blob/master/src/App.js)
-* [Redux](https://github.com/kerenKi/chat-app--client/blob/master/src/reducers/messages.js)
-* [socketset](https://github.com/kerenKi/chat-app--client/blob/master/src/store.js)
+* [Express](https://github.com/kerenKi/Chat-app-server/blob/master/src/users/routes.js)
+* [Sequelize](https://github.com/kerenKi/Chat-app-server/blob/master/src/users/model.js)
+* [Socket.io](https://github.com/kerenKi/Chat-app-server/blob/master/index.js)
+* [Jsonwebtoken](https://github.com/kerenKi/Chat-app-server/blob/master/src/auth/jwt.js)
+* [Bcrypt](https://github.com/kerenKi/Chat-app-server/blob/master/src/auth/routes.js)
 
-[Here](https://github.com/kerenKi/chat-app--client) is the backend side of the project
+
+[Here](https://github.com/kerenKi/chat-app--client) is the frontend side of the project
 
 ### `installation`
 
