@@ -6,6 +6,8 @@ const AuthRouter = require('./src/auth/routes')
 const MessagesRouter = require('./src/messages/routes')
 const UserRouter = require('./src/users/routes')
 const emitMessages = require('./src/emitMessages')
+const phoneValidationRouter =require('./src/phoneVerification/routes')
+
 
 const app = express()
 
@@ -15,6 +17,7 @@ app
 .use(AuthRouter)
 .use(MessagesRouter)
 .use(UserRouter)
+.use(phoneValidationRouter)
 
 
 function onListen () {
