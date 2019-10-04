@@ -16,7 +16,7 @@ router.post('/logins', (req, res)=> {
     })
   } else {
      // 1. find user based on email address
-     User
+    User
       .findOne({
         where: {
           email
